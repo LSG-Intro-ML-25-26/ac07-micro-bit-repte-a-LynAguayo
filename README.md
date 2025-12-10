@@ -1,27 +1,29 @@
+## Pedra, Paper o Tisora amb Micro:bit
 
-> Obre aquesta pàgina a [https://raimonizard.github.io/microbit-template-repo/](https://raimonizard.github.io/microbit-template-repo/)
+Aquest programa et permet jugar a **Pedra, Paper o Tisora** contra la CPU utilitzant els pins del micro:bit.
 
-## Utilitza-ho com a extensió
+## Com comença el joc?
 
-Aquest dipòsit es pot afegir com una **extensió** a MakeCode.
+Agita el micro:bit o prem el botó "Shake".
+Apareixerà **START** i una icona feliç: això indica que el joc ha començat.
 
-* obre [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* fes clic a **Projecte nou**
-* fes clic a **Extensions** sota el menú de la roda dentada
-* cercar **https://github.com/raimonizard/microbit-template-repo** i importar
+## Com es juga?
 
-## Edita aquest projecte
+Tria la teva jugada prement un pin:
 
-Per editar aquest repositori a MakeCode.
+* **P0** → Tisora
+* **P1** → Pedra
+* **P2** → Paper
 
-* obre [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* fes clic a ** Importa** i després a ** Importa URL**
-* enganxa **https://github.com/raimonizard/microbit-template-repo** i clica importar
+Primer es mostra la teva jugada, després la de la CPU.
 
-#### Metadades (utilitzades per a la cerca, renderització)
+## Quan acaba?
 
-* for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+Després de comparar les jugades:
 
-## Resultat
+* Mostra si **has guanyat**, **perdut** o **empatat**.
+* Apareix **END** i el joc es reinicia.
+
+Per tornar a jugar, només cal **tornar a agitar** el micro:bit.
+
 ![captura.png](captura.png)
