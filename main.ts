@@ -1,8 +1,10 @@
-let vTurno = 0
+let hand = 0
 input.onGesture(Gesture.Shake, function () {
-    vTurno = randint(1, 3)
-    if (vTurno == 1) {
-        basic.showIcon(IconNames.SmallSquare)
+    hand = randint(1, 3)
+    if (hand == 1) {
+        basic.showIcon(IconNames.Ghost)
+    } else if (hand == 2) {
+        basic.showIcon(IconNames.Heart)
     } else {
     	
     }
