@@ -2,6 +2,23 @@ game_active = False
 hand_player = 0
 hand_cpu = 0
 
+def on_pin_pressed_p0():
+    global hand_player
+    if game_active and hand_player == 0:
+        hand_player = 1
+        player_turn()
+input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
+
+def show_hand(hand: number):
+    if hand == 1:
+        basic.show_icon(IconNames.SMALL_SQUARE)
+    elif hand == 2:
+        # piedra
+        basic.show_icon(IconNames.SQUARE)
+    else:
+        # papel
+        basic.show_icon(IconNames.SCISSORS)
+
 def on_gesture_shake():
     global game_active, hand_player, hand_cpu
     if not (game_active):
@@ -14,26 +31,6 @@ def on_gesture_shake():
         basic.clear_screen()
 input.on_gesture(Gesture.SHAKE, on_gesture_shake)
 
-def show_hand(hand: number):
-    if hand == 1:
-        basic.show_icon(IconNames.SMALL_SQUARE)
-    elif hand == 2:
-        # piedra
-        basic.show_icon(IconNames.SQUARE)
-    else:
-        # papel
-        basic.show_icon(IconNames.SCISSORS)
-
-def cpu_turn():
-    global hand_cpu
-    # CPU genera opt random
-    hand_cpu = randint(1, 3)
-    basic.show_string("CPU")
-    show_hand(hand_cpu)
-    basic.pause(1000)
-    # mostrar resultado
-    show_result()
-
 def player_turn():
     # mostrar la opt del player
     basic.show_string("YOU")
@@ -42,12 +39,12 @@ def player_turn():
     # turno de la CPU
     cpu_turn()
 
-def on_pin_pressed_p0():
+def on_pin_pressed_p2():
     global hand_player
     if game_active and hand_player == 0:
-        hand_player = 1
+        hand_player = 3
         player_turn()
-input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
+input.on_pin_pressed(TouchPin.P2, on_pin_pressed_p2)
 
 def on_pin_pressed_p1():
     global hand_player
@@ -55,13 +52,6 @@ def on_pin_pressed_p1():
         hand_player = 2
         player_turn()
 input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
-
-def on_pin_pressed_p2():
-    global hand_player
-    if game_active and hand_player == 0:
-        hand_player = 3
-        player_turn()
-input.on_pin_pressed(TouchPin.P2, on_pin_pressed_p2)
 
 def show_result():
     global game_active
@@ -85,3 +75,12 @@ def show_result():
     basic.pause(1000)
     basic.clear_screen()
     basic.show_string("END")
+def cpu_turn():
+    global hand_cpu
+    # CPU genera opt random
+    hand_cpu = randint(1, 3)
+    basic.show_string("CPU")
+    show_hand(hand_cpu)
+    basic.pause(1000)
+    # mostrar resultado
+    show_result()

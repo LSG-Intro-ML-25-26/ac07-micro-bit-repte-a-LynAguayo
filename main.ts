@@ -1,16 +1,11 @@
 let game_active = false
 let hand_player = 0
 let hand_cpu = 0
-input.onGesture(Gesture.Shake, function on_gesture_shake() {
+input.onPinPressed(TouchPin.P0, function on_pin_pressed_p0() {
     
-    if (!game_active) {
-        game_active = true
-        hand_player = 0
-        hand_cpu = 0
-        basic.showString("START")
-        basic.showIcon(IconNames.Happy)
-        basic.pause(500)
-        basic.clearScreen()
+    if (game_active && hand_player == 0) {
+        hand_player = 1
+        player_turn()
     }
     
 })
@@ -27,17 +22,19 @@ function show_hand(hand: number) {
     
 }
 
-function cpu_turn() {
+input.onGesture(Gesture.Shake, function on_gesture_shake() {
     
-    //  CPU genera opt random
-    hand_cpu = randint(1, 3)
-    basic.showString("CPU")
-    show_hand(hand_cpu)
-    basic.pause(1000)
-    //  mostrar resultado
-    show_result()
-}
-
+    if (!game_active) {
+        game_active = true
+        hand_player = 0
+        hand_cpu = 0
+        basic.showString("START")
+        basic.showIcon(IconNames.Happy)
+        basic.pause(500)
+        basic.clearScreen()
+    }
+    
+})
 function player_turn() {
     //  mostrar la opt del player
     basic.showString("YOU")
@@ -47,10 +44,10 @@ function player_turn() {
     cpu_turn()
 }
 
-input.onPinPressed(TouchPin.P0, function on_pin_pressed_p0() {
+input.onPinPressed(TouchPin.P2, function on_pin_pressed_p2() {
     
     if (game_active && hand_player == 0) {
-        hand_player = 1
+        hand_player = 3
         player_turn()
     }
     
@@ -59,14 +56,6 @@ input.onPinPressed(TouchPin.P1, function on_pin_pressed_p1() {
     
     if (game_active && hand_player == 0) {
         hand_player = 2
-        player_turn()
-    }
-    
-})
-input.onPinPressed(TouchPin.P2, function on_pin_pressed_p2() {
-    
-    if (game_active && hand_player == 0) {
-        hand_player = 3
         player_turn()
     }
     
@@ -95,5 +84,16 @@ function show_result() {
     basic.pause(1000)
     basic.clearScreen()
     basic.showString("END")
+}
+
+function cpu_turn() {
+    
+    //  CPU genera opt random
+    hand_cpu = randint(1, 3)
+    basic.showString("CPU")
+    show_hand(hand_cpu)
+    basic.pause(1000)
+    //  mostrar resultado
+    show_result()
 }
 
