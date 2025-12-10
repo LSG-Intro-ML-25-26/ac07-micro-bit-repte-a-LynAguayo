@@ -62,3 +62,26 @@ def on_pin_pressed_p2():
         hand_player = 3
         player_turn()
 input.on_pin_pressed(TouchPin.P2, on_pin_pressed_p2)
+
+def show_result():
+    global game_active
+    # empate
+    if hand_player == hand_cpu:
+        basic.show_icon(IconNames.MEH)
+        basic.pause(1000)
+        basic.show_string("EMPATE")
+    elif hand_player == 1 and hand_cpu == 3 or hand_player == 2 and hand_cpu == 1 or hand_player == 3 and hand_cpu == 2:
+        # player gana
+        basic.show_icon(IconNames.HAPPY)
+        basic.pause(1000)
+        basic.show_string("WIN")
+    else:
+        # CPU gana
+        basic.show_icon(IconNames.SAD)
+        basic.pause(1000)
+        basic.show_string("LOSE")
+    # end juego
+    game_active = False
+    basic.pause(1000)
+    basic.clear_screen()
+    basic.show_string("END")
