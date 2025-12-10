@@ -13,3 +13,14 @@ def on_gesture_shake():
         basic.pause(500)
         basic.clear_screen()
 input.on_gesture(Gesture.SHAKE, on_gesture_shake)
+
+def show_hand(hand: number):
+    if hand == 1:
+        basic.show_icon(IconNames.SMALL_SQUARE)
+    elif hand == 2:
+        # piedra
+        basic.show_icon(IconNames.SQUARE)
+    else:
+        # papel
+        basic.show_icon(IconNames.SCISSORS)
+

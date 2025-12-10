@@ -14,3 +14,16 @@ input.onGesture(Gesture.Shake, function on_gesture_shake() {
     }
     
 })
+function show_hand(hand: number) {
+    if (hand == 1) {
+        basic.showIcon(IconNames.SmallSquare)
+    } else if (hand == 2) {
+        //  piedra
+        basic.showIcon(IconNames.Square)
+    } else {
+        //  papel
+        basic.showIcon(IconNames.Scissors)
+    }
+    
+}
+
