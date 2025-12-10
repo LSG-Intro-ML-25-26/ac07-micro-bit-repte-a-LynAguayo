@@ -24,3 +24,12 @@ def show_hand(hand: number):
         # papel
         basic.show_icon(IconNames.SCISSORS)
 
+def cpu_turn():
+    global hand_cpu
+    # CPU genera opt random
+    hand_cpu = randint(1, 3)
+    basic.show_string("CPU")
+    show_hand(hand_cpu)
+    basic.pause(1000)
+    # mostrar resultado
+    show_result()
