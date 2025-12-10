@@ -49,3 +49,9 @@ def on_pin_pressed_p0():
         player_turn()
 input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
 
+def on_pin_pressed_p1():
+    global hand_player
+    if game_active and hand_player == 0:
+        hand_player = 2
+        player_turn()
+input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
