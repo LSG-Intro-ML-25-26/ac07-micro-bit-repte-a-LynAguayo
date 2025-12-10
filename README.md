@@ -26,4 +26,4 @@ Després de comparar les jugades:
 
 Per tornar a jugar, només cal **tornar a agitar** el micro:bit.
 
-![captura.png](captura.png)
+![captura.png](captura_microbit.png)
