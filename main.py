@@ -41,3 +41,11 @@ def player_turn():
     basic.pause(1000)
     # turno de la CPU
     cpu_turn()
+
+def on_pin_pressed_p0():
+    global hand_player
+    if game_active and hand_player == 0:
+        hand_player = 1
+        player_turn()
+input.on_pin_pressed(TouchPin.P0, on_pin_pressed_p0)
+
