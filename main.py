@@ -33,3 +33,11 @@ def cpu_turn():
     basic.pause(1000)
     # mostrar resultado
     show_result()
+
+def player_turn():
+    # mostrar la opt del player
+    basic.show_string("YOU")
+    show_hand(hand_player)
+    basic.pause(1000)
+    # turno de la CPU
+    cpu_turn()
